@@ -12,6 +12,8 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "dotenv": "^16.4.4",
+    "nodemailer": "^6.9.9",
     "puppeteer": "^22.0.0"
   },
   "devDependencies": {

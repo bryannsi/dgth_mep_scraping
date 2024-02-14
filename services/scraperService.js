@@ -9,7 +9,7 @@ const scraper = async (url) => {
     await page.goto(url);
 
     // Esperar hasta que se carguen las figuras
-    await page.waitForSelector('.wp-block-table');
+    await page.waitForSelector(".wp-block-table", { timeout: 80000 });
 
     // Obtener todas las figuras que contienen tablas
     const tablesData = await page.evaluate(() => {
