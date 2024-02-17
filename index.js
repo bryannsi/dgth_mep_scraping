@@ -5,7 +5,15 @@ import { mail, subDomain } from "./config.js";
 
 //Realizar scrapping de la pagina
 
-const result = await sendMail(mail.transporterConfig, mail.mailOptions).catch(console.error)
+let mailOptions = {
+  from: "bryannsi@gmail.com",// dirección del remitente
+  to: 'bryannsi@outlook.com', // lista de receptores
+  subject: 'Hola ✔', // Línea de asunto
+  text: 'Hola mundo!', // cuerpo de texto plano
+  html: '<b>Hola mundo!</b>' // cuerpo de html
+};
+
+const result = await sendMail(mail.transporterConfig, mailOptions).catch(console.error)
 console.dir(result)
 
 
