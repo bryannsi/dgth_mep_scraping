@@ -12,9 +12,11 @@ const processData = async () => {
       const data = await scraper(`https://dgth.mep.go.cr/${domain}/`);
       console.log(`Data for ${domain}:`, data);
 
-      filePath = jsonExport('./', JSON_DATA_FILENAME, data);
+      if (data && data.length > 0) {
+        filePath = jsonExport('./', JSON_DATA_FILENAME, data);
+      }
     } catch (error) {
-      console.error(`Error scraping data for ${domain}:`, error);
+      // console.error(`Error scraping data for ${domain}:`, error);
     }
   }
   return filePath;

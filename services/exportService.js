@@ -8,7 +8,6 @@ const jsonExport = (filePath, fileName, data) => {
     let dataJson = JSON.stringify(data, null, 2);
     fs.appendFileSync(fileNamePath, dataJson);
     return fileNamePath;
-    // console.log(`Datos guardados con exito en ${fileNamePath}`);
   } catch (err) {
     console.error(err);
     throw err;

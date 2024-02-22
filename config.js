@@ -7,7 +7,6 @@ import { oauth2Client } from "./utils/googleAPI.js"
 const createTransporterConfig = async () => {
   const oauth2 = await oauth2Client(process.env.OAUTH_CLIENTID, process.env.OAUTH_CLIENT_SECRET, process.env.OAUTH_REFRESH_TOKEN, process.env.REDIRECT_URL);
   let accessToken = await oauth2.getAccessToken();
-  console.log(accessToken)
 
   let transporterConfig = {
     service: 'gmail',
