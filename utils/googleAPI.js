@@ -1,7 +1,7 @@
 import { google } from 'googleapis';
 
 
-const oauth2Client = async (oauthClientId, oauthClientSecret,oauth2RefreshToken, redirectUrl) => {
+const oauth2Client = async (oauthClientId, oauthClientSecret, oauth2RefreshToken, redirectUrl) => {
   const oAuth2Client = new google.auth.OAuth2(
     oauthClientId,
     oauthClientSecret,

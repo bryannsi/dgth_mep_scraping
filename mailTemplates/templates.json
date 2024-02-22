@@ -1,0 +1,22 @@
+{
+  "template1": {
+    "from": "MAIL_USERNAME",
+    "to": "bryannsi@outlook.com",
+    "subject": "Hola ✔",
+    "text": "Hola mundo!",
+    "html": "<b>Hola mundo!</b>",
+    "attachments": [
+      {
+          "filename": "nombre_del_archivo.ext",
+          "path": "/ruta/al/archivo.ext"
+      }
+  ]
+  },
+  "template2": {
+    "from": "MAIL_USERNAME",
+    "to": "otrocorreo@ejemplo.com",
+    "subject": "Otro asunto",
+    "text": "Otro texto",
+    "html": "<b>Otro HTML</b>"
+  }
+}

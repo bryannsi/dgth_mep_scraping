@@ -30,7 +30,10 @@ const scraper = async (url) => {
             const propertyValue = propertyValueCell.querySelector('a') ? propertyValueCell.querySelector('a').href : propertyValueCell.textContent.trim();
 
             // Verificar si la propiedad "Especialidad" contiene al inicio la palabra "INFORMATICA"
-            if (propertyName === "Especialidad" && propertyValue.startsWith("INFORMATICA")) {
+            if (propertyName === "Especialidad" &&
+              (propertyValue.toUpperCase().startsWith("INFORMATICA") || propertyValue.toUpperCase().includes("RED"))
+            )
+            {
               // Si la condición es verdadera, agregar tableData al array validTablesData
               validTablesData.push(tableData);
             }
