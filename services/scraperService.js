@@ -13,27 +13,31 @@ const scraper = async (url) => {
 
     // Obtener todas las figuras que contienen tablas
     const tablesData = await page.evaluate(() => {
-      const figures = Array.from(document.querySelectorAll('.wp-block-table'));
+      const figures = Array.from(document.querySelectorAll(".wp-block-table"));
       const validTablesData = [];
 
-      figures.forEach(figure => {
-        const tables = Array.from(figure.querySelectorAll('table'));
+      figures.forEach((figure) => {
+        const tables = Array.from(figure.querySelectorAll("table"));
 
-        tables.forEach(table => {
-          const rows = Array.from(table.querySelectorAll('tr'));
+        tables.forEach((table) => {
+          const rows = Array.from(table.querySelectorAll("tr"));
 
           const tableData = {};
 
-          rows.forEach(row => {
-            const [propertyNameCell, propertyValueCell] = row.querySelectorAll('td');
+          rows.forEach((row) => {
+            const [propertyNameCell, propertyValueCell] =
+              row.querySelectorAll("td");
             const propertyName = propertyNameCell.textContent.trim();
-            const propertyValue = propertyValueCell.querySelector('a') ? propertyValueCell.querySelector('a').href : propertyValueCell.textContent.trim();
+            const propertyValue = propertyValueCell.querySelector("a")
+              ? propertyValueCell.querySelector("a").href
+              : propertyValueCell.textContent.trim();
 
             // Verificar si la propiedad "Especialidad" contiene al inicio la palabra "INFORMATICA"
-            if (propertyName === "Especialidad" &&
-              (propertyValue.toUpperCase().startsWith("INFORMATICA") || propertyValue.toUpperCase().includes("RED"))
-            )
-            {
+            if (
+              propertyName === "Especialidad" &&
+              (propertyValue.toUpperCase().startsWith("INFORMATICA") ||
+                propertyValue.toUpperCase().includes("RED"))
+            ) {
               // Si la condición es verdadera, agregar tableData al array validTablesData
               validTablesData.push(tableData);
             }

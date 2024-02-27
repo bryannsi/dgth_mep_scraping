@@ -2,15 +2,15 @@
   "template1": {
     "from": "MAIL_USERNAME",
     "to": "bryannsi@outlook.com",
-    "subject": "Hola ✔",
+    "subject": "DGTH MEP SCRAPING",
     "text": "Hola mundo!",
-    "html": "<b>Hola mundo!</b>",
+    "html": "<b>Scraping</b><p> de la página de puestos y lecciones disponibles del MEP</p>",
     "attachments": [
       {
-          "filename": "nombre_del_archivo.ext",
-          "path": "/ruta/al/archivo.ext"
+        "filename": "nombre_del_archivo.ext",
+        "path": "/ruta/al/archivo.ext"
       }
-  ]
+    ]
   },
   "template2": {
     "from": "MAIL_USERNAME",
