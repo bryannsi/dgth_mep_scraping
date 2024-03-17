@@ -1,24 +1,18 @@
-import fs from "fs";
-import path from "path";
-
-const jsonExport = (filePath, fileName, data) => {
-  const fileNamePath = path.normalize(path.join(filePath, fileName));
+const jsonExport = (writeFile, filePath, data) => {
   try {
     // write new data
     const dataJson = JSON.stringify(data, null, 2);
-    fs.appendFileSync(fileNamePath, dataJson);
-    return fileNamePath;
-  } catch (err) {
-    console.error(err);
-    throw err;
+    writeFile(filePath, dataJson);
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 };
 
-const truncateData = (filePath, fileName) => {
+const truncateData = (writeFile, filePath) => {
   try {
-    const fileNamePath = path.normalize(path.join(filePath, fileName));
     // truncate all data content
-    fs.writeFileSync(fileNamePath, "");
+    writeFile(filePath, "");
   } catch (error) {
     console.error(error);
   }

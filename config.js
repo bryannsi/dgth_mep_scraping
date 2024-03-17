@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import { oauth2Client } from "./utils/googleAPI.js";
 dotenv.config();
 
-const createTransporterConfig = async () => {
+const getTransporterConfig = async () => {
   const oauth2 = await oauth2Client(
     process.env.OAUTH_CLIENTID,
     process.env.OAUTH_CLIENT_SECRET,
@@ -26,7 +26,7 @@ const createTransporterConfig = async () => {
   return transporterConfig;
 };
 
-export { createTransporterConfig };
+export { getTransporterConfig };
 
 export const SUBDOMAIN = process.env.SUBDOMAIN.split(",");
 

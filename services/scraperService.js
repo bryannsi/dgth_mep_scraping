@@ -1,12 +1,27 @@
 import puppeteer from "puppeteer";
+import ora from "ora";
 
 const scraper = async (url) => {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.setDefaultNavigationTimeout(0);
+  // Launch a loading spinner with an appropriate message on the terminal
+  // It provides a good user experience as the scraping process takes a bit of time
+  const date = Date.now();
+  const spinner = ora({
+    text: "Launcing puppeteer",
+    color: "blue",
+    hideCursor: false
+  }).start();
+  let browser;
 
   try {
+    browser = await puppeteer.launch();
+    spinner.text = "Launching headless browser page";
+    const page = await browser.newPage();
+    spinner.text = `Navigating to ${url}`;
+    page.setDefaultNavigationTimeout(0);
     await page.goto(url);
+
+    // Change the message on the terminal as we start scraping the page
+    spinner.text = "Scraping page DGTH MEP";
 
     // Esperar hasta que se carguen las figuras
     await page.waitForSelector(".wp-block-table");
@@ -41,7 +56,6 @@ const scraper = async (url) => {
               // Si la condición es verdadera, agregar tableData al array validTablesData
               validTablesData.push(tableData);
             }
-
             // Asignar la propiedad y el valor al objeto tableData
             tableData[propertyName] = propertyValue;
           });
@@ -52,8 +66,16 @@ const scraper = async (url) => {
     });
 
     return tablesData;
+  } catch (err) {
+    // Print failed on the terminal if scraping is unsuccessful
+    spinner.fail({ text: "Scraping failed" });
+    // Remove the spinner from the terminal
+    spinner.clear();
   } finally {
+    spinner.text = "Closing headless browser";
     await browser.close();
+    spinner.succeed(`Page scraping successfull after ${Date.now() - date}ms`);
+    spinner.clear();
   }
 };
 
