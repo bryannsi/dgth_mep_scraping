@@ -1,5 +1,5 @@
-import puppeteer from "puppeteer";
 import ora from "ora";
+import puppeteer from "puppeteer";
 
 const scraper = async (url) => {
   // Launch a loading spinner with an appropriate message on the terminal
@@ -42,10 +42,18 @@ const scraper = async (url) => {
           rows.forEach((row) => {
             const [propertyNameCell, propertyValueCell] =
               row.querySelectorAll("td");
-            const propertyName = propertyNameCell.textContent.trim();
+            let propertyName = propertyNameCell.textContent.trim();
             const propertyValue = propertyValueCell.querySelector("a")
               ? propertyValueCell.querySelector("a").href
               : propertyValueCell.textContent.trim();
+
+            // Quitar acentos del propertyName, importante para la libreria node-json2html
+            propertyName = propertyName
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "");
+
+            // Quitar el símbolo '/' si está presente
+            propertyName = propertyName.replace(/\//g, "");
 
             // Verificar si la propiedad "Especialidad" contiene al inicio la palabra "INFORMATICA"
             if (

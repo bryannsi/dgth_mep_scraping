@@ -1,7 +1,8 @@
 const jsonExport = (writeFile, filePath, data) => {
   try {
+    let dataJson = flattenArrayOfArrays(data);
     // write new data
-    const dataJson = JSON.stringify(data, null, 2);
+    dataJson = JSON.stringify(dataJson, null, 2);
     writeFile(filePath, dataJson);
   } catch (error) {
     console.error(error);
@@ -17,5 +18,9 @@ const truncateData = (writeFile, filePath) => {
     console.error(error);
   }
 };
+
+function flattenArrayOfArrays (arrays) {
+  return arrays.reduce((flatArray, subArray) => flatArray.concat(subArray), []);
+}
 
 export { jsonExport, truncateData };

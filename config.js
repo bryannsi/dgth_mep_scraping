@@ -38,4 +38,5 @@ export const OAUTH_REFRESH_TOKEN = process.env.OAUTH_REFRESH_TOKEN;
 export const REDIRECT_URL = process.env.REDIRECT_URL;
 
 export const TEMPLATES_PATH = process.env.TEMPLATES_PATH;
+export const JSON_DATA_PATH = process.env.JSON_DATA_PATH;
 export const JSON_DATA_FILENAME = process.env.JSON_DATA_FILENAME;

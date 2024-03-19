@@ -11,6 +11,9 @@ dependencies:
   googleapis:
     specifier: ^133.0.0
     version: 133.0.0
+  node-json2html:
+    specifier: ^3.0.0
+    version: 3.0.0
   nodemailer:
     specifier: ^6.9.9
     version: 6.9.9
@@ -2075,6 +2078,10 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
+    dev: false
+
+  /node-json2html@3.0.0:
+    resolution: {integrity: sha512-VXLy0VQOAh7pdSgAENEWBdAUOgedDVmJH0k3PaYPCyAtdz60y31KRXqVz4Xn1kZtF62zhry/7SZt8Dw3egO0zw==}
     dev: false
 
   /nodemailer@6.9.9:

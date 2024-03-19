@@ -4,7 +4,7 @@ class TemplateService {
     this.templates = JSON.parse(readFile(templatesPath, "utf8"));
   }
 
-  getMailTemplate (templateName, emailFrom, file) {
+  getMailTemplate (templateName, emailFrom, file, htmlTable) {
     const template = this.templates[templateName];
     template.from = emailFrom;
     template.attachments = [
@@ -13,6 +13,7 @@ class TemplateService {
         path: file.path
       }
     ];
+    template.html = htmlTable;
     return template;
   }
 }
