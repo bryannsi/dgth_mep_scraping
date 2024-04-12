@@ -23,7 +23,7 @@ const createHtmlTable = (jsonData) => {
     const bodyTemplate = {
       "<>": "tr",
       html: Array.from(allProperties).map((prop) => {
-        return { "<>": "td", html: "${" + prop + "}" };
+        return { "<>": "td", html: "${" + prop + "}", style: "width: auto;" };
       })
     };
 

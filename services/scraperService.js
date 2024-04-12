@@ -1,7 +1,7 @@
 import ora from "ora";
 import puppeteer from "puppeteer";
 
-const scraper = async (url) => {
+const scraper = async (url, jobs) => {
   // Launch a loading spinner with an appropriate message on the terminal
   // It provides a good user experience as the scraping process takes a bit of time
   const date = Date.now();
@@ -54,12 +54,12 @@ const scraper = async (url) => {
 
             // Quitar el símbolo '/' si está presente
             propertyName = propertyName.replace(/\//g, "");
-
             // Verificar si la propiedad "Especialidad" contiene al inicio la palabra "INFORMATICA"
             if (
               propertyName === "Especialidad" &&
-              (propertyValue.toUpperCase().startsWith("INFORMATICA") ||
-                propertyValue.toUpperCase().includes("RED"))
+              ["INFORMATICA", "REDES"].some((word) =>
+                propertyValue.toUpperCase().includes(word)
+              )
             ) {
               // Si la condición es verdadera, agregar tableData al array validTablesData
               validTablesData.push(tableData);

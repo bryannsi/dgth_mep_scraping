@@ -23,7 +23,7 @@ const scrapperData = async () => {
   truncateData(fs.writeFileSync, filePath);
   const allData = []; // Array to store all objects
   for (const domain of SUBDOMAIN) {
-    const data = await scraper(`https://dgth.mep.go.cr/${domain}/`);
+    const data = await scraper(`https://dgth.mep.go.cr/${domain}/`, [""]);
     console.log(`Data for ${domain}:`, data);
 
     if (data && data.length > 0) {
